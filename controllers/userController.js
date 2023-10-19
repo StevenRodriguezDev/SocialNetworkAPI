@@ -4,9 +4,11 @@ module.exports = {
   //Get all users
   getUser(req, res) {
     User.find({})
+    .populate("thoughts")
       .then((user) => res.json(user))
       .catch((err) => res.status(500).json(err));
   },
+  
   //Get single user
   getSingleUser(req, res) {
     User.findOne({ _id: req.params.userId })
@@ -44,7 +46,7 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
   //delete a user
-  //BONUS: Remove a user's associated thoughts when deleted.?? 
+  //BONUS: Remove a user's associated thoughts when deleted.?? not working
   deleteUser(req, res) {
     User.findOneAndDelete({ _id: req.params.userId })
       .then((user) =>
@@ -52,8 +54,8 @@ module.exports = {
           ? res.status(404).json({ message: "User not found with this ID!" })
           : Thought.deleteMany({ _id: { $in: user.thoughts } })
       )
-      .then(() => res.json({ message: "User and Thought deleted!" }))
-      .catch((err) => res.status(500).json(err));
+      // .then(() => res.json({ message: "User and Thought deleted!" }))
+      // .catch((err) => res.status(500).json(err));
   },
   //add a friend
   addFriend(req, res) {
