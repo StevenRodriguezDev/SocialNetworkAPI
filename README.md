@@ -24,6 +24,8 @@ so that the website can handle large amounts of unstructured data
 
 - n/a
 
+## Video LINK https://drive.google.com/file/d/12W3bmwWhRjKEakf0p5PfyKd9qruZsiSe/view
+
 ## 4. Github
 
 - My Github link: https://github.com/StevenRodriguezDev/SocialNetworkAPI
